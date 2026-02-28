@@ -8,9 +8,9 @@ import AnimatedCounter from './AnimatedCounter';
 // import bg from '../../public/bg.jpg';
 const bg = '/bg.jpg';
 const impactData = [
-  { number: '1000', text: 'People Impacted', color: 'text-[#3BDE3B]' },
+  { number: '1000', text: 'People Impacted', color: 'text-[#e83e8c]' },
   { number: '30', text: 'Schools Reached', color: 'text-blue-500' },
-  { number: '50', text: 'Communities Served', color: 'text-[#3BDE3B]' },
+  { number: '50', text: 'Communities Served', color: 'text-[#e83e8c]' },
   { number: '10', text: 'Volunteers', color: 'text-blue-500' }
 ];
 
@@ -111,7 +111,7 @@ const HomePage = () => {
 Join us in building a future where dignity, care, and hope are for everyone.</div>
             </div>
             <div className={`mt-3 md:mt-5 transform transition-all duration-1000 opacity-0 ${showCard2 ? 'opacity-100' : ''}`}>
-                <Card backgroundColor="bg-[#e83e8c] hover:bg-orange-600 transition-colors" textColor="text-black">
+                <Card backgroundColor="bg-[#e83e8c] hover:bg-pink-600 transition-colors" textColor="text-black">
                     <button 
                       onClick={handleVolunteerClick}
                       className="py-3 md:py-4 px-6 md:px-10 text-base md:text-lg"

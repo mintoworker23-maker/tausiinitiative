@@ -113,7 +113,7 @@ const Donate = ({ onClose }) => {
         )}
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-pink-500"></div>
           </div>
         ) : (
           showQR ? (
@@ -123,7 +123,7 @@ const Donate = ({ onClose }) => {
               </Card>
               <p className="text-lg font-semibold mt-6 mb-3">Scan to pay Ksh{customAmount || selectedAmount}</p>
               <div className='flex flex-col items-center mt-4 space-y-4'>
-                <Card backgroundColor="bg-orange-500" textColor="text-black">
+                <Card backgroundColor="bg-pink-500" textColor="text-black">
                   <button
                     onClick={() => setShowQR(false)}
                     className="mt-3 mb-3 w-full py-2 px-10 text-lg font-bold flex justify-center items-center" 
@@ -206,7 +206,7 @@ const Donate = ({ onClose }) => {
                 </div>
               </div>
 
-              <Card backgroundColor="bg-orange-500" textColor="text-black">
+              <Card backgroundColor="bg-pink-500" textColor="text-black">
                 <button 
                   type="submit"
                   className="w-full p-3 transition-colors text-base md:text-lg font-bold flex justify-center items-center"

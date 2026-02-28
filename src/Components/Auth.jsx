@@ -64,7 +64,7 @@ const Auth = () => {
                             <label className="block mb-2">Password</label>
                             <input type="password" name="password" className="w-full p-2 border rounded" required />
                         </div>
-                        <button type="submit" className="w-full bg-[#3BDE3B] text-white p-2 rounded">
+                        <button type="submit" className="w-full bg-[#e83e8c] text-white p-2 rounded">
                             {isLogin ? 'Login' : 'Sign Up'}
                         </button>
                     </form>

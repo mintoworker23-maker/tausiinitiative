@@ -48,7 +48,7 @@ const About = () => {
             <div className="flex w-full">
                 <div className="flex justify-start items-start px-4">
             <AnimateOnScroll animation="slideIn">
-                <Card backgroundColor="bg-[#3BDE3B]" textColor="text-black">
+                <Card backgroundColor="bg-[#e83e8c]" textColor="text-black">
                     <div className="text-4xl font-bold px-6 py-2 text-black">About Tausi Initiative</div>
                 </Card>
             </AnimateOnScroll>

@@ -50,7 +50,7 @@ const Projects = () => {
         <div id="project-overview" className="w-full px-4 md:px-6 lg:px-8 overflow-x-hidden">
             <div className='flex py-4 w-full sm:w-64'>
                 <div className='flex justify-start items-start w-full'>
-                    <Card backgroundColor="bg-[#3BDE3B]" textColor="text-black">
+                    <Card backgroundColor="bg-[#e83e8c]" textColor="text-black">
                         <div className='py-2 px-4 text-2xl md:text-3xl lg:text-4xl font-bold'>Our Projects</div>
                     </Card>
                 </div>
@@ -81,7 +81,7 @@ Economic Empowerment is a core pillar of the Tausi Initiative, focused on breaki
 <br /><br />
 <b>How It Began</b>
 <br /><br />
-Starting as a grassroots effort to help local women in Busia and Nairobi, we realized that many talented individuals lacked only the "business bridge"�the knowledge of financial literacy and entrepreneurial skills�to turn their crafts into sustainable income.
+Starting as a grassroots effort to help local women in Busia and Nairobi, we realized that many talented individuals lacked only the "business bridge" the knowledge of financial literacy and entrepreneurial skills to turn their crafts into sustainable income.
 <br /><br />
 <b>Core Mission</b>
 <br /><br />

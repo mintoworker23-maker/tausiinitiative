@@ -47,7 +47,7 @@ const ProgressBar = ({ title, items }) => {
             </motion.div>
             <div className="w-full bg-gray-200 rounded-full h-2 md:h-3 overflow-hidden">
               <motion.div
-                className="bg-[#3BDE3B] h-full rounded-full"
+                className="bg-[#e83e8c] h-full rounded-full"
                 initial="hidden"
                 animate={inView ? "visible" : "hidden"}
                 variants={barVariants(item.progress)}

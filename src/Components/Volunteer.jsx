@@ -251,7 +251,7 @@ export default function VolunteerForm() {
             <LeafIcon />
           </div>
 
-          <Card backgroundColor="bg-orange-500" textColor="text-black"> 
+          <Card backgroundColor="bg-pink-500" textColor="text-black"> 
             <h1 className="text-3xl font-bold text-center p-2 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)]">
               Volunteer Registration
             </h1>
@@ -403,11 +403,11 @@ export default function VolunteerForm() {
           </div>
 
           {/* Skills Section Indicator */}
-          <div id="skills-experience" className="col-span-full flex items-center gap-2 mt-4 mb-0 border-b-2 border-dashed border-orange-500 pb-2">
-            <svg className="w-6 h-6 text-orange-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div id="skills-experience" className="col-span-full flex items-center gap-2 mt-4 mb-0 border-b-2 border-dashed border-pink-500 pb-2">
+            <svg className="w-6 h-6 text-pink-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
             </svg>
-            <span className="font-bold text-orange-800">Skills & Experience</span>
+            <span className="font-bold text-pink-800">Skills & Experience</span>
           </div>
 
           {/* Skills */}
@@ -417,7 +417,7 @@ export default function VolunteerForm() {
               name="skills"
               value={formData.skills}
               onChange={handleChange}
-              className="w-full border-3 border-black rounded-none px-3 py-2 bg-orange-100 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.9)] focus:outline-none focus:ring-2 focus:ring-black"
+              className="w-full border-3 border-black rounded-none px-3 py-2 bg-pink-100 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.9)] focus:outline-none focus:ring-2 focus:ring-black"
             ></textarea>
           </div>
 

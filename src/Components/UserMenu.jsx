@@ -21,7 +21,7 @@ export const UserMenu = () => {
 
     return (
         <div className="relative" ref={menuRef}>
-            <Card backgroundColor="bg-[#3BDE3B]" textColor="text-black">
+            <Card backgroundColor="bg-[#e83e8c]" textColor="text-black">
                 <button 
                     onClick={() => setIsOpen(!isOpen)}
                     className="px-4 py-2 flex items-center space-x-3 hover:bg-[#32c932] transition-colors duration-200 rounded-lg"
