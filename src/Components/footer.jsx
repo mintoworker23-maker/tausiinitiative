@@ -61,7 +61,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className='hover:text-gray-300 cursor-pointer'>
-                <a href='https://youtube.com/@vansarthi?si=Str6cB3kDyglow7T' target='_blank' rel='noopener noreferrer'>
+                <a href='https://youtube.com/@tausiinitiative?si=Str6cB3kDyglow7T' target='_blank' rel='noopener noreferrer'>
                   <Youtube />
                 </a>
               </div>
