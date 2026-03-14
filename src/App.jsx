@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import HomePage from './Components/HomePage'
 import Navigation from './Components/Navigation'
 import { AuthProvider } from './context/AuthContext'
+import ChatBot from './Components/ChatBot'
 import AuthSuccess from './Components/AuthSuccess'
 import Footer from './Components/footer'
 
