@@ -3,7 +3,6 @@ import HomePage from './Components/HomePage'
 import Navigation from './Components/Navigation'
 import { AuthProvider } from './context/AuthContext'
 import AuthSuccess from './Components/AuthSuccess'
-import ChatBot from './Components/ChatBot'
 import Footer from './Components/footer'
 
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
