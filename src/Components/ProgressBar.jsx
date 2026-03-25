@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const ProgressBar = ({ title, items }) => {
+const ProgressBar = ({ title, items, barClassName = "bg-[#e83e8c]" }) => {
   const [ref, inView] = useInView({
     threshold: 0.2,
     triggerOnce: true
@@ -47,7 +47,7 @@ const ProgressBar = ({ title, items }) => {
             </motion.div>
             <div className="w-full bg-gray-200 rounded-full h-2 md:h-3 overflow-hidden">
               <motion.div
-                className="bg-[#e83e8c] h-full rounded-full"
+                className={`${barClassName} h-full rounded-full`}
                 initial="hidden"
                 animate={inView ? "visible" : "hidden"}
                 variants={barVariants(item.progress)}

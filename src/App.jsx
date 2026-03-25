@@ -9,9 +9,15 @@ import Footer from './Components/footer'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import About from './Components/About'
 import Projects from './Components/Projects'
+import FocusAreas from './Components/FocusAreas'
+import TausiQueens from './Components/TausiQueens'
+import CrownScholarship from './Components/CrownScholarship'
+import EconomicEmpowerment from './Components/EconomicEmpowerment'
+import EducationTechnology from './Components/EducationTechnology'
 import Volunteer from './Components/Volunteer'
 import Contact from './Components/Contact'
 import Blog from './Components/Blog'
+import Gallery from './Components/Gallery'
 
 function ScrollToHash() {
   const location = useLocation()
@@ -44,7 +50,14 @@ function App() {
               <Route path="/" element={<HomePage />}/>
               <Route path="/about" element={<About />}/>
               <Route path="/projects" element={<Projects />}/>
+              <Route path="/focus-areas" element={<FocusAreas />}/>
+              <Route path="/projects/tausi-queens" element={<TausiQueens />}/>
+              <Route path="/projects/crown-scholarship" element={<CrownScholarship />}/>
+              <Route path="/projects/economic-empowerment" element={<EconomicEmpowerment />}/>
+              <Route path="/projects/education-technology" element={<EducationTechnology />}/>
               <Route path="/blog" element={<Blog />}/>
+              <Route path="/stories" element={<Blog />}/>
+              <Route path="/gallery" element={<Gallery />}/>
               <Route path="/volunteer" element={<Volunteer />}/>
               <Route path="/contact" element={<Contact />}/>
               <Route path="/auth-success" element={<AuthSuccess />} />

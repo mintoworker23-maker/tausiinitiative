@@ -1,87 +1,125 @@
-import Card from './Card';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import Login from './Login';
-import Donate from './Donate';
-import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import Card from './Card';
+import Donate from './Donate';
+import Login from './Login';
 import { UserMenu } from './UserMenu';
 
 const aboutFeaturedMembers = [
-  { 
-      name: "Elizabeth Yotto", 
-      position: "Founder", 
-      image: "/members/Elizabeth Yotto.png"  // Fixed filename format
+  {
+    name: 'Elizabeth Yotto',
+    position: 'Founder',
+    image: '/members/Elizabeth Yotto.png',
   },
-  { 
-      name: "Daphine Yotto", 
-      position: "Team Member", 
-      image: "/members/Daphine Yotto.png"  // Standardized path
+  {
+    name: 'Daphine Yotto',
+    position: 'Team Member',
+    image: '/members/Daphine Yotto.png',
   },
-  { 
-      name: "Teddy Omondi", 
-      position: "Volunteer IT Team Lead", 
-      image: "/members/Teddy Omondi.png"  // Standardized path
+  {
+    name: 'Teddy Omondi',
+    position: 'Volunteer IT Team Lead',
+    image: '/members/Teddy Omondi.png',
   },
-  { 
-      name: "Boke Tifanny", 
-      position: "Team Member", 
-      image: "/members/Boke Tifanny.png"  // Standardized path
+  {
+    name: 'Boke Tifanny',
+    position: 'Team Member',
+    image: '/members/Boke Tifanny.png',
   },
-  { 
-      name: "Grace Mcyoto", 
-      position: "Team Member", 
-      image: "/members/Grace Mcyoto.png"
+  {
+    name: 'Grace Mcyoto',
+    position: 'Team Member',
+    image: '/members/Grace Mcyoto.png',
   },
 ];
 
 const desktopMenuContent = {
   about: {
-    label: 'About',
+    label: 'About Us',
     route: '/about',
     panelTitle: 'About Us',
     description:
-      'Learn about our story, mission, and how our leadership drives long-term impact.',
-    learnMore: { label: 'Learn More About Us', to: '/about' },
+      'Learn who Tausi Initiative is, why we exist, and how our team is building long-term community impact.',
+    learnMore: { label: 'Explore About Us', to: '/about' },
     sections: [
-      { label: 'Our Story', to: '/about#our-story' },
-      { label: 'Our Impact', to: '/about#about-impact' },
-      { label: 'Committee', to: '/about#committee' },
-      { label: 'Our Partners', to: '/about#partners' },
+      { label: 'About Us', to: '/about#our-story' },
+      { label: 'Strategic Objectives', to: '/about#about-impact' },
+      { label: 'Our Team', to: '/about#our-team' },
+      { label: 'Partners', to: '/about#partners' },
       { label: 'Mission, Vision, Values', to: '/about#about-overview' },
     ],
     featured: {
-      title: 'Leadership Spotlight',
-      subtitle: 'Meet Our Committee',
-      description: 'Explore the people guiding Tausi Initiative forward.',
-      to: '/about#committee',
+      title: 'Featured Team',
+      subtitle: 'Meet Our Team',
+      description: 'Discover the people driving Tausi Initiative forward.',
+      to: '/about#our-team',
     },
   },
   projects: {
-    label: 'Our Work',
+    label: 'Projects',
     route: '/projects',
-    panelTitle: 'Our Work',
+    panelTitle: 'Projects',
     description:
-      'See our flagship initiatives, project milestones, and program details.',
-    learnMore: { label: 'Explore Projects', to: '/projects' },
+      'Explore our current project portfolio, led by Tausi Queens and the Crown Scholarship Fund vision.',
+    learnMore: { label: 'View All Projects', to: '/projects' },
     sections: [
       { label: 'Overview', to: '/projects#project-overview' },
-      { label: 'Project Details', to: '/projects#project-details' },
-      { label: 'Our Causes', to: '/projects#causes' },
-      { label: 'Upcoming Events', to: '/projects#events' },
+      { label: 'Tausi Queens', to: '/projects/tausi-queens' },
+      { label: 'Crown Scholarship Fund', to: '/projects/crown-scholarship' },
     ],
     featured: {
-      title: 'Featured Program',
-      subtitle: 'Project Rewild',
-      description: 'Wildlife rescue, rehabilitation, and habitat restoration.',
-      to: '/projects#project-rewild',
+      title: 'Featured Project',
+      subtitle: 'Tausi Queens',
+      description: 'Our flagship girls empowerment project centered on mentorship, dignity, leadership, and SRHR knowledge.',
+      to: '/projects/tausi-queens',
+    },
+  },
+  focusAreas: {
+    label: 'Our Focus Areas',
+    route: '/focus-areas',
+    panelTitle: 'Our Focus Areas',
+    description:
+      'Explore the three focus areas that guide Tausi Initiative programs and impact delivery.',
+    learnMore: { label: 'View All Focus Areas', to: '/focus-areas' },
+    sections: [
+      { label: 'Overview', to: '/focus-areas#project-overview' },
+      { label: 'SRHR and Mental Health', to: '/projects/tausi-queens' },
+      { label: 'Education and Technology', to: '/projects/education-technology' },
+      { label: 'Economic Empowerment (Financial Literacy)', to: '/projects/economic-empowerment' },
+    ],
+    featured: {
+      title: 'Featured Focus Area',
+      subtitle: 'SRHR and Mental Health',
+      description: 'A key area delivered through Tausi Queens with mentorship, dignity support, and leadership development.',
+      to: '/projects/tausi-queens',
+    },
+  },
+  stories: {
+    label: 'Stories',
+    route: '/stories',
+    panelTitle: 'Stories',
+    description:
+      'Read story highlights from Tausi Initiative events and browse the photo gallery collections.',
+    learnMore: { label: 'Open Stories Page', to: '/stories' },
+    sections: [
+      { label: 'Story Highlights', to: '/stories' },
+      { label: 'Photo Gallery', to: '/gallery' },
+    ],
+    featured: {
+      title: 'Featured Section',
+      subtitle: 'Photo Gallery',
+      description: 'Browse highlights from mentorship sessions, events, and community activities.',
+      to: '/gallery',
     },
   },
   volunteer: {
     label: 'Volunteer',
     route: '/volunteer',
-    panelTitle: 'Get Involved',
+    panelTitle: 'Volunteer',
     description:
-      'Join our volunteer network and choose how you want to contribute.',
+      'Join our volunteer network and choose how you want to support Tausi Initiative.',
     learnMore: { label: 'Become a Volunteer', to: '/volunteer' },
     sections: [
       { label: 'Personal Info', to: '/volunteer#personal-info' },
@@ -90,29 +128,80 @@ const desktopMenuContent = {
       { label: 'Skills & Experience', to: '/volunteer#skills-experience' },
     ],
     featured: {
-      title: 'Start Here',
-      subtitle: 'Volunteer Registration',
-      description: 'Complete your profile and share your interests.',
+      title: 'Get Involved',
+      subtitle: 'Volunteer Form',
+      description: 'Share your details, interests, and how you would like to help.',
       to: '/volunteer#volunteer-form',
     },
   },
   contact: {
     label: 'Contact',
     route: '/contact',
-    panelTitle: 'Contact Us',
+    panelTitle: 'Contact',
     description:
-      'Reach out for partnerships, feedback, support, or general inquiries.',
+      'Reach out for partnerships, school collaborations, donations, or general support.',
     learnMore: { label: 'Open Contact Page', to: '/contact' },
     sections: [
-      { label: 'Your Details', to: '/contact#your-details' },
-      { label: 'Contact Details', to: '/contact#contact-details' },
-      { label: 'Message', to: '/contact#message-section' },
+      { label: 'Address & Phone', to: '/contact#contact-details' },
+      { label: 'Email Us', to: '/contact#email-us' },
+      { label: 'Get in Touch', to: '/contact#contact-form' },
     ],
     featured: {
       title: 'Fast Access',
       subtitle: 'Contact Form',
-      description: 'Send your message directly to our team.',
+      description: 'Send a direct message to the Tausi Initiative team.',
       to: '/contact#contact-form',
+    },
+  },
+};
+
+const navigationItems = [
+  { label: 'About Us', to: '/about', menu: 'about' },
+  { label: 'Projects', to: '/projects', menu: 'projects' },
+  { label: 'Our Focus Areas', to: '/focus-areas', menu: 'focusAreas' },
+  { label: 'Stories', to: '/stories', menu: 'stories' },
+  { label: 'Volunteer', to: '/volunteer', menu: 'volunteer' },
+  { label: 'Contact', to: '/contact', menu: 'contact' },
+];
+
+const mobileMenuContainerVariants = {
+  closed: {
+    opacity: 0,
+    height: 0,
+    y: -12,
+    transition: {
+      duration: 0.2,
+      ease: [0.4, 0, 1, 1],
+      when: 'afterChildren',
+      staggerChildren: 0.03,
+      staggerDirection: -1,
+    },
+  },
+  open: {
+    opacity: 1,
+    height: 'auto',
+    y: 0,
+    transition: {
+      duration: 0.28,
+      ease: [0.22, 1, 0.36, 1],
+      when: 'beforeChildren',
+      staggerChildren: 0.05,
+      delayChildren: 0.04,
+    },
+  },
+};
+
+const mobileMenuItemVariants = {
+  closed: {
+    opacity: 0,
+    y: -8,
+  },
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.2,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -170,6 +259,13 @@ const Navigation = () => {
   }, [location.state, isAuthenticated]);
 
   useEffect(() => {
+    if (location.state?.openDonate) {
+      setIsDonateVisible(true);
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsAtTop(window.scrollY < 10);
     };
@@ -184,7 +280,7 @@ const Navigation = () => {
 
   const isHomePage = location.pathname === '/';
   const isTransparent = isHomePage && isAtTop;
-  const navTextClass = isTransparent ? 'text-white' : 'text-dark';
+  const navTextClass = isTransparent ? 'text-white' : 'text-black';
   const activeMenu = activeDesktopMenu ? desktopMenuContent[activeDesktopMenu] : null;
 
   return (
@@ -205,22 +301,16 @@ const Navigation = () => {
 
           <div className='hidden md:block'>
             <div className='flex gap-2 pt-2'>
-              {Object.keys(desktopMenuContent).map((menuKey) => (
+              {navigationItems.map((item) => (
                 <Link
-                  key={menuKey}
-                  to={desktopMenuContent[menuKey].route}
-                  onMouseEnter={() => setActiveDesktopMenu(menuKey)}
-                  className={`py-1 px-2 ${navTextClass} hover:text-[#e83e8c]`}
+                  key={item.label}
+                  to={item.to}
+                  onMouseEnter={() => setActiveDesktopMenu(item.menu || null)}
+                  className={`py-1 px-2 ${navTextClass} hover:text-[#e83e8c] whitespace-nowrap`}
                 >
-                  {desktopMenuContent[menuKey].label}
+                  {item.label}
                 </Link>
               ))}
-              <Link
-                to="/blog"
-                className={`py-1 px-2 ${navTextClass} hover:text-[#e83e8c]`}
-              >
-                Blog
-              </Link>
             </div>
           </div>
 
@@ -238,10 +328,15 @@ const Navigation = () => {
             )}
 
             <button
+              type="button"
               className="md:hidden p-2 focus:outline-none"
               onClick={toggleMobileMenu}
+              aria-expanded={isMobileMenuOpen}
+              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
-              <svg
+              <motion.svg
+                animate={{ rotate: isMobileMenuOpen ? 90 : 0, scale: isMobileMenuOpen ? 1.05 : 1 }}
+                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                 className={`w-6 h-6 ${navTextClass}`}
                 fill="none"
                 stroke="currentColor"
@@ -262,7 +357,7 @@ const Navigation = () => {
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 )}
-              </svg>
+              </motion.svg>
             </button>
           </div>
         </div>
@@ -314,14 +409,14 @@ const Navigation = () => {
                       />
                       <div className="min-w-0">
                         <p className="text-sm font-bold text-black truncate">{aboutFeaturedMembers[aboutFeaturedIndex].name}</p>
-                        <p className="text-xs text-gray-600">{aboutFeaturedMembers[aboutFeaturedIndex].credential}</p>
+                        <p className="text-xs text-gray-600">{aboutFeaturedMembers[aboutFeaturedIndex].position}</p>
                       </div>
                     </div>
                     <Link
-                      to="/about#committee"
+                      to="/about#our-team"
                       className="inline-block mt-4 text-sm font-semibold text-[#e83e8c] hover:text-black"
                     >
-                      Meet committee
+                      Meet our team
                     </Link>
                   </div>
                 ) : (
@@ -342,23 +437,34 @@ const Navigation = () => {
           )}
         </div>
 
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-white py-2 px-4">
-            <div className="flex flex-col space-y-3">
-              <Link to="/about" className='py-1 text-dark hover:text-[#e83e8c]'>About</Link>
-              <Link to="/projects" className='py-1 text-dark hover:text-[#e83e8c]'>Our Work</Link>
-              <Link to="/blog" className='py-1 text-dark hover:text-[#e83e8c]'>Blog</Link>
-              <Link to="/volunteer" className='py-1 text-dark hover:text-[#e83e8c]'>Volunteer</Link>
-              <Link to="/contact" className='py-1 text-dark hover:text-[#e83e8c]'>Contact</Link>
+        <AnimatePresence initial={false}>
+          {isMobileMenuOpen && (
+            <motion.div
+              key="mobile-navigation"
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={mobileMenuContainerVariants}
+              className="md:hidden overflow-hidden bg-white px-4 border-t border-black/10"
+            >
+              <div className="flex flex-col space-y-3 py-3">
+                {navigationItems.map((item) => (
+                  <motion.div key={item.label} variants={mobileMenuItemVariants}>
+                    <Link to={item.to} className='block py-1 text-black hover:text-[#e83e8c]'>
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
 
-              {isAuthenticated && (
-                <div className="py-1">
-                  <UserMenu />
-                </div>
-              )}
-            </div>
-          </div>
-        )}
+                {isAuthenticated && (
+                  <motion.div variants={mobileMenuItemVariants} className="py-1">
+                    <UserMenu />
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {isPopupVisible && (

@@ -5,13 +5,14 @@ import { motion } from "framer-motion";
 import { AnimateOnScroll } from "./AnimateonScroll";
 import { useNavigate } from 'react-router-dom';
 import AnimatedCounter from './AnimatedCounter';
-// import bg from '../../public/bg.jpg';
+
 const bg = '/bg.jpg';
+
 const impactData = [
-  { number: '1000', text: 'People Impacted', color: 'text-[#e83e8c]' },
-  { number: '30', text: 'Schools Reached', color: 'text-blue-500' },
-  { number: '50', text: 'Communities Served', color: 'text-[#e83e8c]' },
-  { number: '10', text: 'Volunteers', color: 'text-blue-500' }
+  { number: '1000', text: 'Adolescents Reached (Tausi Queens)', color: 'text-[#e83e8c]' },
+  { number: '50', text: 'Youth & Women Trained (Economic Empowerment)', color: 'text-blue-500' },
+  { number: '9', text: 'Schools & Community Spaces Engaged (Tausi Queens)', color: 'text-[#e83e8c]' },
+  { number: '3', text: 'Core Empowerment Programs', color: 'text-blue-500' }
 ];
 
 const blogPosts = [
@@ -41,36 +42,23 @@ const HomePage = () => {
   const [showCard2, setShowCard2] = useState(false);
   const navigate = useNavigate();
 
-  // Backend coldstart function
   const initializeBackend = async () => {
     try {
-      // Send a request to backend health/ping endpoint
-       // Using environment variable for backend URL
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ping`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      
+
       console.log('Backend initialized:', response.ok);
     } catch (error) {
-      // Silent fail - we don't want to interrupt user experience
-      // if backend is down or unreachable
       console.log('Backend coldstart attempt:', error.message);
     }
   };
 
-  // Send backend initialization request on component mount
   useEffect(() => {
-    // Immediately trigger backend warmup
     initializeBackend();
-    
-    // You could also add a retry mechanism if needed
-    // const retryTimer = setTimeout(() => {
-    //   initializeBackend();
-    // }, 5000);
-    // return () => clearTimeout(retryTimer);
   }, []);
 
   useEffect(() => {
@@ -85,46 +73,42 @@ const HomePage = () => {
     };
   }, []);
 
-  const handleVolunteerClick = () => {
-    navigate('/volunteer');
+  const handleSupportWorkClick = () => {
+    navigate('/projects#project-overview');
   };
 
   return (
     <div className='w-full overflow-x-hidden'>
-      {/* Hero Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="relative flex justify-between items-center min-h-screen w-full"
       >
         <div style={{ backgroundImage: `url(${bg})` }} className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0" >
-        <div className="absolute inset-0 bg-black/25 z-0" />
+          <div className="absolute inset-0 bg-black/25 z-0" />
 
-
-        <div className="relative flex flex-col justify-center items-center w-full max-w-[1200px] mx-auto px-4 z-10 pt-44">
+          <div className="relative flex flex-col justify-center items-center w-full max-w-[1200px] mx-auto px-4 z-10 pt-44">
             <div className={`transform transition-all duration-1000 opacity-0 ${showTitle ? 'opacity-100' : ''}`}>
-                <div className="text-3xl md:text-5xl lg:text-7xl text-center text-white font-bold px-2 md:px-6 py-4 md:py-7">Uplifting Lives Together</div>
+              <div className="text-3xl md:text-5xl lg:text-7xl text-center text-white font-bold px-2 md:px-6 py-4 md:py-7">Empowering Potential. Enriching Lives.</div>
             </div>
             <div className={`hidden md:block px-4 transform transition-all duration-1000 opacity-0 ${showCard1 ? 'opacity-100' : ''}`}>
-                <div className="py-3 md:py-5 text-white px-2 md:px-4 w-full md:w-[700px] text-base md:text-xl text-center">We are Tausi Initiative — uplifting lives through compassion, community, and real impact.
-Join us in building a future where dignity, care, and hope are for everyone.</div>
+              <div className="py-3 md:py-5 text-white px-2 md:px-4 w-full md:w-[700px] text-base md:text-xl text-center">Through integrated programs in Health, Education, and Economic Empowerment, TAUSI Initiative equips vulnerable individuals and groups with the tools they need to thrive.</div>
             </div>
             <div className={`mt-3 md:mt-5 transform transition-all duration-1000 opacity-0 ${showCard2 ? 'opacity-100' : ''}`}>
-                <Card backgroundColor="bg-[#e83e8c] hover:bg-pink-600 transition-colors" textColor="text-black">
-                    <button 
-                      onClick={handleVolunteerClick}
-                      className="py-3 md:py-4 px-6 md:px-10 text-base md:text-lg"
-                    >
-                      Join Our Mission
-                    </button>
-                </Card>
+              <Card backgroundColor="bg-[#e83e8c] hover:bg-pink-600 transition-colors" textColor="text-black">
+                <button
+                  onClick={handleSupportWorkClick}
+                  className="py-3 md:py-4 px-6 md:px-10 text-base md:text-lg"
+                >
+                  Support Our Work
+                </button>
+              </Card>
             </div>
-        </div>
+          </div>
         </div>
       </motion.div>
 
-      {/* Focus Areas Section */}
       <div className="bg-white py-12 md:py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <AnimateOnScroll animation="slideIn">
@@ -134,38 +118,38 @@ Join us in building a future where dignity, care, and hope are for everyone.</di
               </Card>
             </div>
           </AnimateOnScroll>
-          
+
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
             <AnimateOnScroll animation="fadeUp">
               <div className="">
                 <Card backgroundColor="bg-white" textColor="text-black">
-                    <div className="p-6">
-                        <div className=''><TreePine size={50} color="#00c700" strokeWidth={3.5} absoluteStrokeWidth/></div>
-                        <div className='text-2xl font-semibold py-4'>Sexual Health and Mental Well-Being</div>
-                        <div className=''>We promote health awareness, from mental health to Sexual and Reproductive Health and Rights</div>
-                    </div>
+                  <div className="p-6">
+                    <div className=''><TreePine size={50} color="#00c700" strokeWidth={3.5} absoluteStrokeWidth /></div>
+                    <div className='text-2xl font-semibold py-4'>SRHR and Mental Health</div>
+                    <div className=''>We promote Sexual and Reproductive Health and Rights awareness alongside mental well-being support in safe community spaces.</div>
+                  </div>
                 </Card>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll animation="fadeUp">
               <div className="">
                 <Card backgroundColor="bg-white" textColor="text-black">
-                    <div className="p-6">
-                        <div className=''><Heart size={50} color="#ff0000" strokeWidth={3.5} absoluteStrokeWidth/></div>
-                        <div className='text-2xl font-semibold py-4'>Economic Empowerment</div>
-                        <div className=''>We fight poverty by equipping youth and women with entrepreneurial and financial literacy skills.</div>
-                    </div>
+                  <div className="p-6">
+                    <div className=''><Heart size={50} color="#ff0000" strokeWidth={3.5} absoluteStrokeWidth /></div>
+                    <div className='text-2xl font-semibold py-4'>Economic Empowerment (Financial Literacy)</div>
+                    <div className=''>We equip youth and women with entrepreneurship and financial literacy skills to build sustainable livelihoods.</div>
+                  </div>
                 </Card>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll animation="fadeUp">
               <div className="">
                 <Card backgroundColor="bg-white" textColor="text-black">
-                    <div className="p-6">
-                        <div className=''><UsersRound size={50} color="#4268ff" strokeWidth={3.5} absoluteStrokeWidth/></div>
-                        <div className='text-2xl font-semibold py-4'>Education and Technology</div>
-                        <div className=''>We recognize education as a catalyst for transformation.</div>
-                    </div>
+                  <div className="p-6">
+                    <div className=''><UsersRound size={50} color="#4268ff" strokeWidth={3.5} absoluteStrokeWidth /></div>
+                    <div className='text-2xl font-semibold py-4'>Education and Technology</div>
+                    <div className=''>We strengthen education ecosystems through infrastructure advocacy, digital literacy, and school support initiatives.</div>
+                  </div>
                 </Card>
               </div>
             </AnimateOnScroll>
@@ -173,7 +157,6 @@ Join us in building a future where dignity, care, and hope are for everyone.</di
         </div>
       </div>
 
-      {/* Goals Section */}
       <div className='bg-slate-100 py-12 md:py-20'>
         <div className='max-w-7xl mx-auto px-4'>
           <AnimateOnScroll animation="slideIn">
@@ -183,37 +166,36 @@ Join us in building a future where dignity, care, and hope are for everyone.</di
               </Card>
             </div>
           </AnimateOnScroll>
-          
+
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
             <AnimateOnScroll animation="scale">
               <div className='flex flex-col justify-center items-center bg-white w-full h-32 rounded-xl border-dashed border-green-400 border-2 text-center'>
-                  <div className='text-2xl font-bold p-2'>
-                    <AnimatedCounter end={1000000} /> People
-                  </div>
-                  <div className='text-sm p-2'>Target People to be inspired</div>
+                <div className='text-2xl font-bold p-2'>
+                  <AnimatedCounter end={1000000} /> People
+                </div>
+                <div className='text-sm p-2'>Target People to be inspired</div>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll animation="scale">
               <div className='flex flex-col justify-center items-center bg-white w-full h-32 rounded-xl border-dashed border-green-400 border-2 text-center'>
-                  <div className='text-2xl font-bold p-2'>
-                    <AnimatedCounter end={3000} /> Schools
-                  </div>
-                  <div className='text-sm p-2'>Target Schools to be built</div>
+                <div className='text-2xl font-bold p-2'>
+                  <AnimatedCounter end={3000} /> Schools
+                </div>
+                <div className='text-sm p-2'>Target Schools to be built</div>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll animation="scale">
               <div className='flex flex-col justify-center items-center bg-white w-full h-32 rounded-xl border-dashed  border-green-400 border-2 text-center'>
-                  <div className='text-2xl font-bold p-2'>
-                    <AnimatedCounter end={50} /> Communities
-                  </div>
-                  <div className='text-sm p-2'>Target Communities to Empower</div>
+                <div className='text-2xl font-bold p-2'>
+                  <AnimatedCounter end={50} /> Communities
+                </div>
+                <div className='text-sm p-2'>Target Communities to Empower</div>
               </div>
             </AnimateOnScroll>
           </div>
         </div>
       </div>
 
-      {/* Impact Section */}
       <div className='py-12 md:py-20'>
         <div className='max-w-7xl mx-auto px-4'>
           <AnimateOnScroll animation="slideIn">
@@ -223,7 +205,7 @@ Join us in building a future where dignity, care, and hope are for everyone.</di
               </Card>
             </div>
           </AnimateOnScroll>
-          
+
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
             {impactData.map((item, i) => (
               <motion.div
@@ -235,11 +217,13 @@ Join us in building a future where dignity, care, and hope are for everyone.</di
               >
                 <div className='w-full'>
                   <Card backgroundColor="bg-white hover:bg-gray-50 transition-colors" textColor="text-black">
-                    <div className='flex flex-col justify-center items-center h-28 w-full'>
-                      <div className={`text-4xl font-bold ${item.color}`}>
+                    <div className='flex flex-col justify-center items-center min-h-[180px] md:min-h-[200px] w-full px-4 py-5 text-center gap-3'>
+                      <div className={`text-3xl md:text-4xl leading-none font-bold ${item.color}`}>
                         <AnimatedCounter end={parseInt(item.number)} />
                       </div>
-                      <div className='text-gray-600 font-medium'>{item.text}</div>
+                      <div className='text-gray-600 font-medium text-sm md:text-base leading-snug max-w-[220px] break-words'>
+                        {item.text}
+                      </div>
                     </div>
                   </Card>
                 </div>
@@ -247,9 +231,8 @@ Join us in building a future where dignity, care, and hope are for everyone.</di
             ))}
           </div>
         </div>
-    </div>
+      </div>
 
-      {/* Blog Section */}
       <div className='py-12 md:py-20 bg-gray-100'>
         <div className='max-w-7xl mx-auto px-4'>
           <AnimateOnScroll animation="slideIn">
@@ -309,7 +292,6 @@ Join us in building a future where dignity, care, and hope are for everyone.</di
         </div>
       </div>
 
-      {/* Founder Section */}
       <section className='w-full bg-[#f8d8e8]'>
         <div className='w-full grid grid-cols-1 md:grid-cols-2 items-center min-h-[340px] px-6 md:px-14 lg:px-20 py-10 md:py-0'>
           <div className='flex flex-col justify-center text-left'>
@@ -331,10 +313,8 @@ Join us in building a future where dignity, care, and hope are for everyone.</di
           </div>
         </div>
       </section>
-
     </div>
   );
 }
-
 
 export default HomePage;

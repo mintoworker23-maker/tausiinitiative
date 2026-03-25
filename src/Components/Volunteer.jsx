@@ -119,6 +119,7 @@ export default function VolunteerForm() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return "Invalid email format";
     if (!formData.phone.trim()) return "Phone number is required";
     if (!/^\d{10}$/.test(formData.phone.replace(/[^0-9]/g, ''))) return "Invalid phone number";
+    if (!formData.interests) return "Please select the project you want to be part of";
     return null;
   };
 
@@ -408,6 +409,24 @@ export default function VolunteerForm() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
             </svg>
             <span className="font-bold text-pink-800">Skills & Experience</span>
+          </div>
+
+          {/* Skills */}
+          <div className="md:col-span-2">
+            <label className="block text-sm font-extrabold text-black mb-1">Project You Want to Be Part Of</label>
+            <select
+              name="interests"
+              value={formData.interests}
+              onChange={handleChange}
+              className="w-full border-3 border-black rounded-none px-3 py-2 bg-pink-100 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.9)] focus:outline-none focus:ring-2 focus:ring-black"
+              required
+            >
+              <option value="">Select a project</option>
+              <option value="Tausi Queens">Tausi Queens</option>
+              <option value="Crown Scholarship Fund">Crown Scholarship Fund</option>
+              <option value="Economic Empowerment">Economic Empowerment</option>
+              <option value="Education & Technology">Education & Technology</option>
+            </select>
           </div>
 
           {/* Skills */}
