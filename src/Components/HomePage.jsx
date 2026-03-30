@@ -6,7 +6,7 @@ import { AnimateOnScroll } from "./AnimateonScroll";
 import { useNavigate } from 'react-router-dom';
 import AnimatedCounter from './AnimatedCounter';
 
-const bg = '/bg.jpg';
+const bg = '/herobg.webp';
 
 const impactData = [
   { number: '1000', text: 'Adolescents Reached (Tausi Queens)', color: 'text-[#e83e8c]' },
