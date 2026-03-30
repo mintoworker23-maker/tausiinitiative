@@ -17,7 +17,7 @@ const About = () => {
     },
     {
       name: "Teddy Omondi",
-      position: "Volunteer IT Team Lead",
+      position: "IT team Member",
       image: "/members/Teddy Omondi.png"
     },
     {
