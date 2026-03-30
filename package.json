@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "compress-images": "python3 scripts/compress_images.py"
   },
   "dependencies": {
     "axios": "^1.7.9",

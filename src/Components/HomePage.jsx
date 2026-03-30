@@ -6,7 +6,11 @@ import { AnimateOnScroll } from "./AnimateonScroll";
 import { useNavigate } from 'react-router-dom';
 import AnimatedCounter from './AnimatedCounter';
 
-const bg = '/herobg.webp';
+const heroImage = {
+  src: '/optimized/herobg-1600.webp',
+  srcSet: '/optimized/herobg-960.webp 960w, /optimized/herobg-1600.webp 1600w, /optimized/herobg-2400.webp 2400w',
+  sizes: '100vw',
+};
 
 const impactData = [
   { number: '1000', text: 'Adolescents Reached (Tausi Queens)', color: 'text-[#e83e8c]' },
@@ -85,7 +89,17 @@ const HomePage = () => {
         transition={{ duration: 0.8 }}
         className="relative flex justify-between items-center min-h-screen w-full"
       >
-        <div style={{ backgroundImage: `url(${bg})` }} className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0" >
+        <div className="absolute top-0 left-0 w-full h-full z-0">
+          <img
+            src={heroImage.src}
+            srcSet={heroImage.srcSet}
+            sizes={heroImage.sizes}
+            alt=""
+            aria-hidden="true"
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-full object-cover object-center"
+          />
           <div className="absolute inset-0 bg-black/25 z-0" />
 
           <div className="relative flex flex-col justify-center items-center w-full max-w-[1200px] mx-auto px-4 z-10 pt-44">
