@@ -11,6 +11,7 @@
     "compress-images": "python3 scripts/compress_images.py"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "axios": "^1.7.9",
     "cors": "^2.8.5",
     "framer-motion": "^11.15.0",

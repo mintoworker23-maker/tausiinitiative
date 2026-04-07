@@ -4,6 +4,7 @@ import Navigation from './Components/Navigation'
 import { AuthProvider } from './context/AuthContext'
 import AuthSuccess from './Components/AuthSuccess'
 import Footer from './Components/footer'
+import { Analytics } from '@vercel/analytics/react'
 
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import About from './Components/About'
@@ -64,6 +65,7 @@ function App() {
           </div>
           <Footer />
         </div>
+        <Analytics />
       </BrowserRouter>
     </AuthProvider>
   )
